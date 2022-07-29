@@ -1,0 +1,25 @@
+ClassId: ippool.Pool
+ObjectType: ippool.Pool
+Name: IKS-BM-Pool
+IpV4Blocks:
+- ObjectType: ippool.IpV4Block
+  From: 10.61.124.245
+  Size: 5
+IpV4Config:
+  ObjectType: ippool.IpV4Config
+  Gateway: 10.61.124.1
+  Netmask: 255.255.255.0
+  PrimaryDns: 10.61.124.15
+  SecondaryDns: 10.61.124.16
+---
+ClassId: resourcepool.Pool
+ObjectType: resourcepool.Pool
+Name: IKS-BM
+ResourcePoolParameters:
+  ManagementMode: IntersightStandalone
+  ObjectType: resourcepool.ServerPoolParameters
+ResourceType: Server
+Selectors:
+- ObjectType: resource.Selector
+# make sure to replace the MOID's with those of your server
+  Selector: "/api/v1/compute/RackUnits?$filter=(Moid in ('62cf2acb6176752d30b9f658','62ceb18f6176752d30b9ea41'))"

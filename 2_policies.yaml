@@ -1,0 +1,44 @@
+ClassId: kubernetes.NetworkPolicy
+ObjectType: kubernetes.NetworkPolicy
+Name: private-cluster
+CniType: Calico
+PodNetworkCidr: 100.64.0.0/16
+ServiceCidr: 100.65.0.0/16
+---
+ClassId: kubernetes.SysConfigPolicy
+ObjectType: kubernetes.SysConfigPolicy
+Name: Amslab
+DnsDomainName: amslab.cisco.com
+DnsServers:
+- 10.61.124.15
+- 10.61.124.16
+NtpServers:
+- pool.ntp.org
+Timezone: Europe/Amsterdam
+---
+ClassId: kubernetes.VersionPolicy
+ObjectType: kubernetes.VersionPolicy
+Name: BMKubernetesVersion
+Version: MoRef[Name:iks-bm-20220308-1-v1.21.10]
+---
+ClassId: kubernetes.BaremetalInfraConfigPolicy
+ObjectType: kubernetes.BaremetalInfraConfigPolicy
+Name: BMInfraConfigPolicy
+BmConfig:
+  ClassId: kubernetes.BaremetalInfraConfig
+  NetworkInterfaces:
+  - ObjectType: kubernetes.NetworkInterfaceSpec
+    Mtu: 1500
+    Name: iksbm
+    Pools: MoRef[Name:IKS-BM-Pool]
+    # Pools:
+    #   - ClassId: mo.MoRef
+    #     Moid: 62e2559f6962752d302c327c
+    #     ObjectType: ippool.Pool
+    ProviderName: bm
+---
+ClassId: kubernetes.BaremetalInstanceType
+ObjectType: kubernetes.BaremetalInstanceType
+Name: BMInstanceType
+CpuCores: 2
+Memory: 32
