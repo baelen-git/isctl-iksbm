@@ -1,10 +1,13 @@
 ClassId: kubernetes.ClusterProfile
 ObjectType: kubernetes.ClusterProfile
 ManagedMode: Managed
+# ClusterIpPools: MoRef[IKS-BM-Pool]
+ClusterIpPools: 
+- ClassId: mo.MoRef
+  Moid: 62e2559f6962752d302c327c
+  ObjectType: ippool.Pool
 ManagementConfig:
-  LoadBalancerCount: 0
-  LoadBalancers: []
-  MasterVip: 10.61.124.243
+  LoadBalancerCount: 2
   SshKeys:
   - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF1v8Db0W5UBPCWvt2ytlGJDMppO5Qj/WI/CQ66N+IrX baelen@BAELEN-M-J1FT
   SshUser: iksadmin
@@ -28,7 +31,15 @@ Name: iksbm1-nodegroup-1-bminfraprovider
 NodeGroup: MoRef[Name:iksbm-1-nodegroup-1]
 InfraConfigPolicy: MoRef[Name:BMInfraConfigPolicy]
 InstanceType: MoRef[Name:BMInstanceType]
-ResourcePool: MoRef[Name:IKS-BM]
+# ResourcePool: MoRef[Name:IKS-BM]
+ResourcePool: 
+- ClassId: mo.MoRef
+  Moid: 62e2559f6962752d302c3281
+  ObjectType: resourcepool.Pool
+ServerFilters: 
+- ObjectType: kubernetes.KeyValue
+  Key: "UserLabel"
+  Value: "XXXXX"
 ImageCache:
   ClassId: kubernetes.BaremetalImageCache
   HttpServer:
