@@ -1,11 +1,8 @@
 ClassId: kubernetes.ClusterProfile
 ObjectType: kubernetes.ClusterProfile
 ManagedMode: Managed
-# ClusterIpPools: MoRef[IKS-BM-Pool]
 ClusterIpPools: 
-- ClassId: mo.MoRef
-  Moid: 62e2559f6962752d302c327c
-  ObjectType: ippool.Pool
+- MoRef:ippool.Pool[IKS-BM-Pool]
 ManagementConfig:
   LoadBalancerCount: 2
   SshKeys:
@@ -31,11 +28,8 @@ Name: iksbm1-nodegroup-1-bminfraprovider
 NodeGroup: MoRef[Name:iksbm-1-nodegroup-1]
 InfraConfigPolicy: MoRef[Name:BMInfraConfigPolicy]
 InstanceType: MoRef[Name:BMInstanceType]
-# ResourcePool: MoRef[Name:IKS-BM]
 ResourcePool: 
-- ClassId: mo.MoRef
-  Moid: 62e2559f6962752d302c3281
-  ObjectType: resourcepool.Pool
+- MoRef:resourcepool.Pool[Name:IKS-BM]
 ServerFilters: 
 - ObjectType: kubernetes.KeyValue
   Key: "UserLabel"
