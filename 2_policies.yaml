@@ -30,11 +30,8 @@ BmConfig:
   - ObjectType: kubernetes.NetworkInterfaceSpec
     Mtu: 1500
     Name: mgmt
-    # Pools: MoRef[Name:IKS-BM-Pool]
-    Pools:
-      - ClassId: mo.MoRef
-        Moid: 62e2559f6962752d302c327c
-        ObjectType: ippool.Pool
+    Pools: 
+    - MoRef:ippool.Pool[Name:IKS-BM-Pool]
     ProviderName: bm
 ---
 ClassId: kubernetes.BaremetalInstanceType

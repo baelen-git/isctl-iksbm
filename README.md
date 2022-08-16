@@ -18,5 +18,5 @@
 
 5. Deploy your cluster
 
-`./isctlbm iks cluster deploy iksbm1 -w`
+`./isctlbm --config ~/.isctl-dev.yaml update kubernetes clusterprofile name iksbm1 --Action Deploy`
 

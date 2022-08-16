@@ -1,4 +1,4 @@
-./isctlbm --config ~/.isctl-dev.yaml -k delete metal networkpolicy name BMProviderMasters
-./isctlbm --config ~/.isctl-dev.yaml -k delete metal storagepolicy name BMProviderMasters
-./isctlbm --config ~/.isctl-dev.yaml -k delete metal storageallocationpolicy name BMProviderMasters
-./isctlbm --config ~/.isctl-dev.yaml -k delete metal baremetalserverprovisioner name BMProviderMasters
+./isctlbm --config ~/.isctl-dev.yaml delete metal networkpolicy name iksbm-1-nodegroup-1
+./isctlbm --config ~/.isctl-dev.yaml delete metal storagepolicy name iksbm-1-nodegroup-1
+./isctlbm --config ~/.isctl-dev.yaml delete metal storageallocationpolicy name iksbm-1-nodegroup-1
+./isctlbm --config ~/.isctl-dev.yaml delete metal baremetalserverprovisioner name iksbm-1-nodegroup-1
